@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>Popular Virus Tracker</title>
+</head>
+<body>
+
+
+
+<div class="container">
+
+<div class="jumbotron">
+    <h1 class="display-4">Total Cases Reported Worldwide</h1>
+    <h1 class="display-4" th:text="${totalCasesWorldwide}">Total Cases Reported Worldwide</h1>
+    <hr class="my-4">
+    <p>
+        <span>New Cases Since Previous Date</span>
+        <span th:text="${totalNewCases}"></span>
+    </p>
+</div>
+
+    <div class="p-3 mb-2 bg-light text-dark">
+    <table class="table">
+        <tr>
+            <th>COUNTRY</th>
+            <th>STATE</th>
+            <th>LATEST TOTAL CASES </th>
+            <th>CHANGES SINCE LAST DATE </th>
+        </tr>
+        <tr th:each="locationStats : ${locationStatistics}">
+            <td th:text="${locationStats.country}"></td>
+            <td th:text="${locationStats.state}"></td>
+            <td th:text="${locationStats.latestTotalCases}"></td>
+            <td th:text="${locationStats.delta}"></td>
+        </tr>
+    </table>
+</div>
+</div>
+</body>
+</html>
